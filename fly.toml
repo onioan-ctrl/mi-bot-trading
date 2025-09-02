@@ -1,0 +1,22 @@
+app = "mi-bot-trading"
+
+[build]
+  builder = "paketobuildpacks/builder-jammy-base"
+  buildpacks = ["gcr.io/paketo-buildpacks/python"]
+
+[env]
+  PYTHONUNBUFFERED = "1"
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  http_checks = []
+  internal_port = 8080
+  protocol = "tcp"
+  script_checks = []
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
